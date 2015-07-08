@@ -3,13 +3,13 @@ $(function(){
   var num1, num2, numMayor, numMenor;
   var total_ok = 0;
   var total_nok = 0;
-  var new_sum = false;
 
   function vaciar_msg_res() {
     $('#res_txt_ok').html("");
     $('#res_txt_nok').html("");
     $('#res_txt_aviso').html("");
-    new_sum = false;
+    $("#btnComprobar").prop('disabled', false);
+    $("#btnNueva").prop('disabled', true);
   };
 
   function mostrar_op() {
@@ -68,21 +68,14 @@ $(function(){
         $('#marc_ok').html(total_ok);
       }
       
-      new_sum = true;     
+      $("#btnComprobar").prop('disabled', true);
+      $("#btnNueva").prop('disabled', false);
     }
   });
 
   $("#btnNueva").on('click', function(){
-    
-    if ( new_sum )
-    {
-      vaciar_msg_res();
-      mostrar_op();
-    }
-    else
-    {
-      $('#res').focus();
-    }
+    vaciar_msg_res();
+    mostrar_op();
   });
 
   mostrar_op();
